@@ -1,0 +1,4 @@
+[user]
+	email = stanis.samisco@gmail.com
+	name = stan
+  signingKey = ~/.ssh/personal-gh
