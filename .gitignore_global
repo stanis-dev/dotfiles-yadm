@@ -1,0 +1,9 @@
+CLAUDE.local.md
+.agents/
+
+# IDE/tool configs
+openspec/
+~/code/pronet/.sierras/
+.composer/
+
+**/.claude/settings.local.json

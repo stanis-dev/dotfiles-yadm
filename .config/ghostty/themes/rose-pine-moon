@@ -1,0 +1,45 @@
+# Rosé Pine Moon.
+#
+# Lower saturation than Tokyo Night everywhere, warmer greys, no true
+# neon. This is the Rosé Pine project's own terminal mapping. Switch
+# to it once Neovim follows (rose-pine.nvim, variant "moon");
+# before that the Neovim pane stays navy inside a plum window.
+
+background = #232136
+foreground = #e0def4
+
+# Cursor: the theme's "highlight high" grey; text under it inverts.
+cursor-color = #56526e
+cursor-text = #e0def4
+
+# Selection: "highlight med".
+selection-background = #44415a
+selection-foreground = #e0def4
+
+# 0 black = overlay
+palette = 0=#393552
+# 1 red = love
+palette = 1=#eb6f92
+# 2 green = pine (a teal; this is the official choice)
+palette = 2=#3e8fb0
+# 3 yellow = gold
+palette = 3=#f6c177
+# 4 blue = foam
+palette = 4=#9ccfd8
+# 5 magenta = iris
+palette = 5=#c4a7e7
+# 6 cyan = rose
+palette = 6=#ea9a97
+# 7 white = text
+palette = 7=#e0def4
+# 8 bright black = muted (dim text)
+palette = 8=#6e6a86
+# 9-15: bright variants equal the normal ones
+palette = 9=#eb6f92
+palette = 10=#3e8fb0
+palette = 11=#f6c177
+palette = 12=#9ccfd8
+palette = 13=#c4a7e7
+palette = 14=#ea9a97
+palette = 15=#e0def4
+

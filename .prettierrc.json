@@ -1,0 +1,22 @@
+{
+    "tabWidth": 4,
+    "printWidth": 100,
+    "trailingComma": "es5",
+    "arrowParens": "avoid",
+    "quoteProps": "preserve",
+    "overrides": [
+        {
+            "files": ["*.yaml", "*.yml"],
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": ["*.md"],
+            "options": {
+                "printWidth": 120,
+                "proseWrap": "always"
+            }
+        }
+    ]
+}

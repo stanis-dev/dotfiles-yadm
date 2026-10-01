@@ -1,0 +1,56 @@
+# Tokyo Night Storm, calmed.
+#
+# Same background and text as the stock theme, so Neovim and any
+# other program still painting stock Tokyo Night sit flush with the
+# terminal. The accents are pulled roughly a quarter of the way
+# toward the background so they read as tints rather than signals.
+# The stock value sits in the comment above each line, so any single
+# colour can be restored on its own.
+
+background = #24283b
+foreground = #c0caf5
+
+# Cursor: a shade under the text colour; text under it inverts.
+cursor-color = #a9b1d6
+cursor-text = #24283b
+
+# Selection: Tokyo Night's own visual-mode blue.
+selection-background = #364a82
+selection-foreground = #c0caf5
+
+# 0 black (stock #1d202f)
+palette = 0=#1d202f
+# 1 red (stock #f7768e)
+palette = 1=#d67d8f
+# 2 green (stock #9ece6a)
+palette = 2=#a3c58a
+# 3 yellow (stock #e0af68)
+palette = 3=#d6b27f
+# 4 blue (stock #7aa2f7)
+palette = 4=#86a4e0
+# 5 magenta (stock #bb9af7)
+palette = 5=#b39ddb
+# 6 cyan (stock #7dcfff)
+palette = 6=#8fc4e0
+# 7 white (stock #a9b1d6)
+palette = 7=#a9b1d6
+
+# 8 bright black. Stock is #414868, which almost vanishes on this
+# background. tmux and most TUIs use it for dim text (borders,
+# hints, inactive items), so it is raised to Tokyo Night's comment
+# colour: visible, but clearly secondary.
+palette = 8=#565f89
+
+# 9-14: bright variants equal the normal ones. bold-is-bright is off
+# in the main config, so these only appear when a program asks for
+# them explicitly, and then they should not shout either.
+palette = 9=#d67d8f
+palette = 10=#a3c58a
+palette = 11=#d6b27f
+palette = 12=#86a4e0
+palette = 13=#b39ddb
+palette = 14=#8fc4e0
+
+# 15 bright white (stock #c0caf5)
+palette = 15=#c0caf5
+

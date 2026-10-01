@@ -1,0 +1,151 @@
+// Zed keymap — LazyVim-shaped, leader-driven (space)
+//
+// Docs: https://zed.dev/docs/key-bindings  •  https://zed.dev/docs/vim
+// See defaults: command palette → "zed: open default keymap".
+//
+// Discoverability: native which_key is ON (settings.json). Pause after a
+// prefix (e.g. `space`) and Zed shows the available continuations.
+//
+// Leader = space, scoped to `vim_mode == normal` so it NEVER inserts a
+// literal space in insert mode, the terminal, or input fields.
+[
+  // ── Escapes: jk / kj → normal (insert mode only) ──────────────────────────
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+      "k j": "vim::NormalBefore"
+    }
+  },
+
+  // ── Leader tree: space, NORMAL MODE ONLY ──────────────────────────────────
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space space": "file_finder::Toggle",        // find files
+      "space /":     "pane::DeploySearch",         // project-wide grep
+      "space e":     "project_panel::ToggleFocus", // file explorer
+      "space :":     "command_palette::Toggle",    // command palette
+
+      // f — find files ──────────────────────────────────────────
+      "space f f": "file_finder::Toggle",          // files
+      "space f r": ["projects::OpenRecent", { "create_new_window": false }], // recent projects
+      "space f b": "tab_switcher::Toggle",         // open buffers
+
+      // s — search ──────────────────────────────────────────────
+      "space s g":       "pane::DeploySearch",                          // grep (project-wide)
+      "space s b":       "buffer_search::Deploy",                       // search in buffer
+      "space s s":       "outline::Toggle",                             // document symbols
+      "space s shift-s": "project_symbols::Toggle",                     // workspace symbols
+      "space s d":       "diagnostics::Deploy",                         // diagnostics list
+      "space s r":       ["pane::DeploySearch", { "replace_enabled": true }], // search & replace
+      // NOTE: Zed has no single action to grep the word under cursor.
+      // Recipe: `v i w` (or `*`) to select, then `space s g` seeds the query.
+
+      // g — git ─────────────────────────────────────────────────
+      "space g g": "git_panel::ToggleFocus",       // status panel
+      "space g b": "git::Blame",                   // blame current file
+      "space g B": ["branches::OpenRecent", {}],   // branch switcher
+      "space g d": "git::Diff",                    // diff view
+
+      // b — buffer / tab ────────────────────────────────────────
+      "space b b": "tab_switcher::Toggle",         // switch
+      "space b n": "pane::ActivateNextItem",       // next
+      "space b p": "pane::ActivatePreviousItem",   // prev
+      "space b d": ["pane::CloseActiveItem", { "close_pinned": false }], // close
+
+      // w — window / pane ───────────────────────────────────────
+      "space w v": "pane::SplitRight",             // vsplit
+      "space w s": "pane::SplitDown",              // hsplit
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w q": ["pane::CloseActiveItem", { "close_pinned": false }], // close
+
+      // c — code / LSP ──────────────────────────────────────────
+      "space c a": "editor::ToggleCodeActions",    // code actions
+      "space c r": "editor::Rename",               // rename
+      "space c f": "editor::Format",               // format
+      "space c h": "editor::Hover",                // hover
+      "space c d": "diagnostics::Deploy"           // project diagnostics
+    }
+  },
+
+  // ── File tree: close with space e while it's focused ──────────────────────
+  // The project panel lives in the RIGHT dock here (left dock = agents). The
+  // tree has its own context, so we bind `space e` there too — to hide the
+  // right dock, since Zed has no panel-specific close action.
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleRightDock"
+    }
+  },
+
+  // ── Pane navigation: ctrl-h/j/k/l (editor, normal mode) ───────────────────
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  // Same nav from panels / terminal so the muscle memory is universal
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+
+  // ── Terminal: same nav language as everywhere else ────────────────────────
+  // Unbound keys fall through to the PTY, so every binding here is a key
+  // deliberately taken from the shell. Replacements for the stolen control
+  // chars ship in Zed's defaults: cmd-k = clear (ctrl-l), cmd-delete =
+  // kill-to-EOL (ctrl-k), backspace = ctrl-h. Claude Code newline (ctrl-j) →
+  // alt-enter below, or `\` + enter.
+  {
+    "context": "Terminal",
+    "bindings": {
+      // pane nav — mirrors editor ctrl-hjkl
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      // tab cycle — the H/L stand-in (alt-h/l otherwise just type ˙/¬)
+      "alt-h": "pane::ActivatePreviousItem",
+      "alt-l": "pane::ActivateNextItem",
+      // ctrl-space = leader while in a terminal (NUL byte, nothing needs it)
+      "ctrl-space space": "file_finder::Toggle",
+      "ctrl-space /":     "pane::DeploySearch",
+      "ctrl-space e":     "project_panel::ToggleFocus",
+      "ctrl-space b":     "tab_switcher::Toggle",
+      "ctrl-space g":     "git_panel::ToggleFocus",
+      // option-enter = meta-enter → newline in Claude Code's input
+      "alt-enter": ["terminal::SendText", "\u001b\r"]
+    }
+  },
+
+  // ── Motions ───────────────────────────────────────────────────────────────
+  // Native vim defaults already provide: ]d / [d (diagnostics) and
+  // ]m / [m (method start). Below: [f / ]f aliases for method motion, plus
+  // your preserved panel-tab bindings (now correctly scoped to vim modes,
+  // which overrides vim's H/L screen-top/bottom motions — by choice).
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "] f": "vim::NextMethodStart",
+      "[ f": "vim::PreviousMethodStart",
+      // H / L = prev / next buffer (LazyVim convention). These are editor
+      // *pane* items, not dock *panel* tabs — panel::*PanelTab no-ops here.
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem"
+    }
+  }
+]

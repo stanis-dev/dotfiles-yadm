@@ -1,0 +1,15 @@
+[user]
+	email = stanis.samisco@gmail.com
+	name = stan
+  IdentityFile = ~/.ssh/personal-gh
+  signingKey = ~/.ssh/personal-g
+
+; [user]
+; 	email = stan.samisco@ext.sierra.ai
+; 	name = stan
+[core]
+	excludesfile = /Users/stan/.gitignore_global
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true

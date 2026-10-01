@@ -1,0 +1,131 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    "show_completion_documentation": false,
+    "show_completions_on_input": false,
+    "use_system_window_tabs": false,
+    "tabs": {
+        "show_diagnostics": "all",
+        "file_icons": true,
+        "git_status": false
+    },
+    "toolbar": {
+        "breadcrumbs": true
+    },
+    "edit_predictions": {
+        "mode": "subtle",
+        "allow_data_collection": "no",
+    },
+    "agent": {
+        "profiles": {},
+        "sandbox_permissions": {
+            "allow_fs_write_all": true,
+        },
+        "show_turn_stats": true,
+        "enable_feedback": true,
+        "play_sound_when_agent_done": "never",
+        "favorite_models": [],
+        "model_parameters": [],
+        "tool_permissions": {
+            "default": "allow",
+            "tools": {},
+        },
+    },
+    "diagnostics": {
+        "inline": {
+            "enabled": true,
+        },
+    },
+    "icon_theme": "Material Icon Theme",
+    "title_bar": {
+        "show_menus": false,
+    },
+    "terminal": {
+        "toolbar": {
+            "breadcrumbs": false,
+        },
+        "font_fallbacks": ["Symbols Nerd Font Mono"],
+    },
+    "proxy": "",
+    "which_key": {
+        "enabled": true,
+    },
+    "sticky_scroll": {
+        "enabled": true,
+    },
+    "smooth_scroll": {
+        "enabled": true,
+    },
+    "git": {
+        "inline_blame": {
+            // Hide inline blame while holding j/k. Restarted on every cursor
+            // move; must exceed InitialKeyRepeat (15 ticks = 225ms) or blame
+            // flashes at the start of a hold.
+            "delay_ms": 300,
+        },
+    },
+    "colorize_brackets": true,
+    "show_whitespaces": "trailing",
+    "preferred_line_length": 120,
+    // Keep the cursor away from the top/bottom edges. Percentages aren't
+    // supported (integer lines only); ~70 lines is larger than half a viewport,
+    // so in practice it keeps the cursor centered (typewriter-style scrolling).
+    // Lower this (e.g. 12) for an actual ~25% band on a normal-height window.
+    "vertical_scroll_margin": 70,
+    "vim": {
+        "use_smartcase_find": true,
+    },
+    "agent_servers": {
+        "pi-acp": {
+            "type": "registry",
+        },
+        "cursor": {
+            "default_config_options": {
+                "effort": "xhigh",
+                "context": "1m",
+                "model": "claude-fable-5",
+                "mode": "yolo",
+            },
+            "type": "custom",
+            "command": "/Users/stan/.local/bin/agent",
+            "args": ["--force", "acp"]
+        },
+        "codex-acp": {
+            "type": "registry",
+        },
+        "claude-acp": {
+            "default_config_options": {
+                "effort": "max",
+                "mode": "bypassPermissions",
+            },
+            "type": "registry",
+        },
+    },
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+    "session": {
+        "trust_all_worktrees": true,
+    },
+    "vim_mode": true,
+    "ui_font_size": 16,
+    "buffer_font_size": 15,
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Catppuccin Macchiato (Blur) [Heavy]",
+    },
+    "theme_overrides": {
+        "Catppuccin Macchiato (Blur) [Heavy]": {
+            "border": "#6e738d",
+            "pane_group.border": "#6e738d",
+        },
+    },
+}

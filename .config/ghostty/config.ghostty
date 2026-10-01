@@ -1,0 +1,45 @@
+# config-file = themes/tokyonight-calm
+config-file = themes/rose-pine-moon
+
+macos-titlebar-style = tabs
+macos-window-shadow = true
+window-theme = ghostty
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 15
+font-thicken = true
+font-thicken-strength = 96
+
+adjust-cell-height = 15%
+adjust-underline-position = 2
+bold-is-bright = false
+
+window-padding-x = 8
+window-padding-y = 10
+window-padding-balance = true
+window-step-resize = true
+
+window-padding-balance = true
+window-padding-color = extend
+
+#background-opacity = 0.95
+#background-blur = true
+
+copy-on-select = true
+clipboard-read = allow
+
+macos-window-buttons = hidden
+keybind = super+r=reload_config
+macos-titlebar-proxy-icon = hidden
+
+keybind = performable:ctrl+h=goto_split:left
+keybind = performable:ctrl+j=goto_split:down
+keybind = performable:ctrl+k=goto_split:up
+keybind = performable:ctrl+l=goto_split:right
+keybind = nvim/
+keybind = nvim/ctrl+h=text:\x08
+keybind = nvim/ctrl+j=text:\x0a
+keybind = nvim/ctrl+k=text:\x0b
+keybind = nvim/ctrl+l=text:\x0c
+
+# command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
